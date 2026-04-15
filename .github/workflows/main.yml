@@ -1,0 +1,34 @@
+name: Environment Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Use staging secret
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: echo "Staging: ${API_KEY} "
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: use production secret
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: echo "Production: ${API_KEY} "
+
+    
