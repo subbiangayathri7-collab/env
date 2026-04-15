@@ -16,7 +16,7 @@ jobs:
       - name: Use staging secret
         env:
           API_KEY: ${{ secrets.API_KEY }}
-        run: echo "Staging: ${API_KEY} "
+        run: 'echo "Staging: ${API_KEY}"'
 
   deploy-production:
     runs-on: ubuntu-latest
@@ -29,6 +29,6 @@ jobs:
       - name: use production secret
         env:
           API_KEY: ${{ secrets.API_KEY }}
-        run: echo "Production: ${API_KEY} "
+        run: 'echo "Production: ${API_KEY}"'
 
     
